@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<!--HEAD-->
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0"> 
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Montserrat|Raleway|Roboto&display=swap" rel="stylesheet">
+
+    <title>Documento</title>
+
+    <style>
+        *{
+            font-family: Montserrat;
+            overflow: hidden;
+        }
+        .body {
+            width: 100vw;
+            height: 100vh;
+            overflow: hidden;
+        }
+        h1{
+            z-index: 8;
+
+            -webkit-user-select: none; /* Safari 3.1+ */
+            -moz-user-select: none; /* Firefox 2+ */
+            -ms-user-select: none; /* IE 10+ */
+            user-select: none; /* Standard */
+
+            position: absolute;
+            top: 20%;
+            left: 50%;
+            transform: translate(-50%, -20%);
+
+            margin: auto;
+            padding: 0px;
+
+            color: white;
+            text-shadow: 0 0 5px #000;
+        }
+        button{
+            z-index: 2;
+
+            -webkit-user-select: none; /* Safari 3.1+ */
+            -moz-user-select: none; /* Firefox 2+ */
+            -ms-user-select: none; /* IE 10+ */
+            user-select: none; /* Standard */
+
+            position: absolute;
+            top: 30%;
+            left: 50%;
+            transform: translate(-50%, -30%);
+
+            margin: auto;
+            padding: 0px;
+        }
+    </style>
+</head>
+
+<!--BODY-->
+<body onload="change()">
+    <div class="body" onclick="change()"></div>
+    
+        <h1 class="text" id="text"></h1>
+
+        <button onclick="copyClip()" class="btn">Copy Hex</button>
+
+<!--script-->
+<script>
+    function change() {
+        var bg_color = Math.floor(Math.random() * 16777215).toString(16);
+        bg_color = "#" + ("000000" + bg_color).slice(-6);
+        document.bgColor = bg_color;
+
+        console.log(bg_color);
+        document.getElementById("text").innerHTML = bg_color.toUpperCase();
+
+        return
+    }
+
+    function copyClip() {
+        var copyText = document.bgColor;
+        copyText.select();
+        copyText.setSelectionRange(0, 99999);
+        copyText.execCommand("copy");        
+    }
+</script>
+
+</body>
+</html>
+
+    
